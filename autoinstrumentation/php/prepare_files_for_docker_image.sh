@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -xe -o pipefail
 
 # TODO: Sergey Kleyman: UNCOMMENT
 #PHP_versions=(8.1 8.2 8.3)
