@@ -177,6 +177,17 @@ download_PHP_packages() {
 }
 
 main() {
+#####################################/
+# TODO: Sergey Kleyman: BEGIN: REMOVE:
+###################/
+
+    pwd
+    ls -al .
+
+###################/
+# END: REMOVE
+######################################
+
     parse_args "$@"
 
     echo "Preparing files for docker image into directory ${destination_directory} ..."
