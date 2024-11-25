@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
-PHP_versions=(8.1 8.2 8.3)
+# TODO: Sergey Kleyman: UNCOMMENT
+#PHP_versions=(8.1 8.2 8.3)
+PHP_versions=(8.1)
 libc_variants=(glibc musl)
 
 show_help() {
@@ -145,6 +147,8 @@ download_PHP_packages_for_PHP_version() {
     ensure_dir_exists_and_empty "${dest_dir_for_current_args}"
     local composer_json_file_name
     composer_json_file_name=$(select_composer_json_for_PHP_version "${PHP_version}")
+    echo "composer_json_file_name: ${composer_json_file_name}"
+    ls -l  "${PWD}/${composer_json_file_name}"
     local current_user_id
     current_user_id="$(id -u)"
     local current_user_group_id
@@ -178,7 +182,8 @@ main() {
     echo "Preparing files for docker image into directory ${destination_directory} ..."
 
     ensure_dir_exists_and_empty "${destination_directory}"
-    build_native_binaries
+# TODO: Sergey Kleyman: UNCOMMENT
+#    build_native_binaries
     download_PHP_packages
 
     echo "Prepared files for docker image into directory ${destination_directory}"
